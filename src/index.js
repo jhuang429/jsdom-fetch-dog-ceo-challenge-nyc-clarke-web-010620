@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function(e){
     .then(resp=>resp.json())
     .then(json=> {
         let ul =  document.getElementById("dog-breeds")
-        let dogs = Object.keys(json["message"])
+        dogs = Object.keys(json["message"]) //global variable 
         console.log(dogs)
         for(let i=0; i < dogs.length; i++){
             let li = document.createElement("li");
@@ -36,13 +36,9 @@ window.addEventListener("DOMContentLoaded", function(e){
     document.addEventListener('input', updateValue);
 
     function updateValue(e) {
-      fetch("https://dog.ceo/api/breeds/list/all")
-      .then(resp=>resp.json())
-      .then(json=> {
           let ul =  document.getElementById("dog-breeds");
           ul.innerHTML = "";
           let letter = e.target.value;
-          let dogs = Object.keys(json["message"]);
           for(let i=0; i < dogs.length; i++){
               if (dogs[i].charAt(0) === letter) {
                 let li = document.createElement("li");
@@ -50,7 +46,7 @@ window.addEventListener("DOMContentLoaded", function(e){
                 ul.append(li)
               }
           }
-      })
+      
 
     }
 
